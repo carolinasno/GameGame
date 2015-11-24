@@ -1,0 +1,73 @@
+body {
+  background-image: url(http://www.oxfordbikeweek.co.uk/wp-content/uploads/370799.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+  font-family: 'Old Standard TT', serif;
+  font-size: 18px;
+}
+
+img {
+  height: 200px;
+  text-align: left;
+}
+
+h1 {
+  float: right;
+  margin: 7px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 125px;
+  text-shadow: 1.2px 1.2px 4px #000000;
+  vertical-align: middle;
+  color: rgb(45, 184, 65);
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  color: moccasin;
+  text-shadow: 2px 2px 4px #000000;
+  margin: 0px;
+  height: 40px;
+}
+
+#drunk-leslie{
+  padding: 5px 5px 5px 0px;
+  margin: 3px;
+  height: 200px;
+  border-radius: 1em;
+}
+
+.qa {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.menu-buttons {
+  padding: 0px 3px 3px 3px;
+  margin: 0px 5px 5px 5px;
+  height: 100%;
+}
+
+.trivia {
+  background-color: rgba(255,255,255,0.5);
+  height: 300px;
+  width: 700px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px;
+  box-shadow: 2px 2px 4px #000000;
+}
+
+.option {
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.answers {
+  margin: 3px;
+}
