@@ -34,7 +34,13 @@ h2 {
   text-shadow: 2px 2px 4px #000000;
   margin: 0px;
   height: 40px;
-  padding: 10px;
+}
+
+#drunk-leslie{
+  padding: 5px 5px 5px 0px;
+  margin: 3px;
+  height: 200px;
+  border-radius: 1em;
 }
 
 .qa {
@@ -50,7 +56,7 @@ h2 {
 
 .trivia {
   background-color: rgba(255,255,255,0.5);
-  height: 500px;
+  height: 300px;
   width: 700px;
   text-align: center;
   margin: 0 auto;
