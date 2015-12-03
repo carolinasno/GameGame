@@ -18,56 +18,75 @@ renderNameDisplay();
 // click next button, show next question
 var $qArray = $('.questions');
 var q = 0;
+var start = 1;
 
 function nextButton() {
-  $('input:radio[name=radio]').prop('checked', false);
-  $('#next-button').attr('disabled', 'true');
-  $('input:radio[name=radio]').click(function () {
-  var checkval = $('input:radio[name=radio]:checked').val();
-  if (checkval == 'a' || checkval == 'b' || checkval == 'c' || checkval == 'd') {
-      $('#next-button').removeAttr('disabled');
-  }
-  });
+  console.log('next button running...');
+  // $('input:radio[name=radio]').prop('checked', false);
+  // $('#next-button').attr('disabled', 'true');
+  // $('input:radio[name=radio]').click(function () {
+  // var checkval = $('input:radio[name=radio]:checked').val();
+  // if (checkval == 'a' || checkval == 'b' || checkval == 'c' || checkval == 'd') {
+  //     $('#next-button').removeAttr('disabled');
+  // }
+  // });
+
+  var guess = $($qArray[q]).find(":checked").val();
+  var answer = $('#answer').val();
+  keepScore(guess,answer);
+
   if (q < $qArray.length) {
-    $qArray.hide();
-    $($qArray[q]).show();
+    $qArray[q].remove();
     q++;
+    $($qArray[q]).show();
+    renderQuestionNumber();
   };
+
+  $('#next-button').remove();
+  var newButton = $('<button>').attr('id', 'next-button').html('Next');
+
+  $('.next-button').append(newButton);
+  bindNextButton();
 };
 
-nextButton();
+// nextButton();
 
 // hide questions, show first question,
 $($displayQuestion = function(){
     $('.questions').hide();
     $('.questions:nth-child(1)').show();
-    $('.next-button').on('click', function(){
-        nextButton();
-    });
+    bindNextButton();
 });
+
+function bindNextButton(){
+  $('#next-button').on('click', function(){
+    nextButton();
+  });
+}
+
+
 
 // keep score, display after last question
-var $answer = $('#answer').val();
-var $keepScore = $('#keep-score').html();
 
-function keepScore() {
+var score = 0;
+
+function keepScore(guess, answer){
+  console.log('the score is:' + score);
   $('#keep-score').hide();
-  $('.next-button').on('click', function(){
-    if ($('input:radio[id=answer]').prop('checked', true)) {
-    $('#keep-score').html(function(i, val) {
-      return val*1+1;
-    });
-  };
-  if ($('input:radio[id=wrong]').prop('checked', false)) {
-  $('#keep-score').html(function(i, val) {
-    return val*1;
-  });
-  };
-});
+    console.log(guess);
+    console.log(answer);
+    // var guess = $('#question-1').find(":checked").val();
+    if ( guess === answer){
+      score = score + 1;
+      console.log('the score is now:' + score);
+      $('#keep-score').text(score);
+    } else {
+      console.log('wrong answer');
+    }
+
 };
 
-keepScore();
-
+// keepScore();
 
 // display what question player is on
 function renderQuestionNumber() {
@@ -83,18 +102,21 @@ function renderQuestionNumber() {
         $('#question-8'),
         $('#question-9'),
         $('#question-10'),
-      ],
-      start = 1;
-    $questionNumber.text("Question " + (start++) + " out of " + $questionsArray.length);
-    $('.next-button').on('click', function(){
-    $questionNumber.text("Question " + (start++) + " out of " + $questionsArray.length);
-      if (start === 12) {
-        $questionNumber.text("Your score is " + ($keepScore) + " !") && ($('.questions')).text("");
+      ];
+    $questionNumber.text("Question " + (start) + " out of " + $questionsArray.length);
+
+
+    // $('#next-button').on('click', function(){
+    $questionNumber.text("Question " + (start) + " out of " + $questionsArray.length);
+      if (start === 11) {
         $('.next-button').hide();
+        $questionNumber.text("Your score is " + score + " !") && ($('.questions')).text("");
       };
-    });
+    start++;
+    // });
 };
 
 renderQuestionNumber();
+
 
 });
